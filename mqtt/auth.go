@@ -26,6 +26,7 @@ func getAdminClient(brokerIP string, brokerPort string, username string, passwor
 	return client, nil
 }
 
+// This methods creates the role under the name of user login, and then creates an account under that role. Token is the MQTT password
 func CreateUser(brokerIP string, brokerPort string, username string, password string, login string, token string) error {
 	var client, err = getAdminClient(brokerIP, brokerPort, username, password)
 
@@ -79,6 +80,7 @@ func CreateUser(brokerIP string, brokerPort string, username string, password st
 	return nil
 }
 
+// This method allows to update the user MQQT account name and token (if it needs to be regenerated)
 func UpdateUser(brokerIP string, brokerPort string, username string, password string, login string, token string) error {
 	var client, err = getAdminClient(brokerIP, brokerPort, username, password)
 
@@ -115,6 +117,7 @@ func UpdateUser(brokerIP string, brokerPort string, username string, password st
 	return nil
 }
 
+// This methods grants the user role and, therefore, user account a subscribe permisions for the listed topics
 func GrantTopicAccess(brokerIP string, brokerPort string, username string, password string, login string, topics []string) error {
 	var client, err = getAdminClient(brokerIP, brokerPort, username, password)
 
@@ -155,6 +158,7 @@ func GrantTopicAccess(brokerIP string, brokerPort string, username string, passw
 	return nil
 }
 
+// This methods removes the access ro topics subscriptions from the provided user
 func DenyTopicAccess(brokerIP string, brokerPort string, username string, password string, login string, topics []string) error {
 	var client, err = getAdminClient(brokerIP, brokerPort, username, password)
 

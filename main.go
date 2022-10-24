@@ -61,7 +61,7 @@ func (server Server) UpdateUser(ctx context.Context, req *auth.UserRequest) (*au
 }
 
 func (server Server) ActivateDevice(ctx context.Context, req *auth.DeviceRequest) (*auth.Response, error) {
-	logger.Info("Activating device", req.Login, req.Mac)
+	logger.Info("Adding topic permisions for the device", req.Login, req.Mac)
 	err := mqtt.GrantTopicAccess(
 		server.BrokerIP,
 		server.BrokerPort,
@@ -82,7 +82,7 @@ func (server Server) ActivateDevice(ctx context.Context, req *auth.DeviceRequest
 }
 
 func (server Server) DeactivateDevice(ctx context.Context, req *auth.DeviceRequest) (*auth.Response, error) {
-	logger.Println("Deactivating device", req.Login, req.Mac)
+	logger.Println("Removing topic permissions for the device device", req.Login, req.Mac)
 	err := mqtt.DenyTopicAccess(
 		server.BrokerIP,
 		server.BrokerPort,
