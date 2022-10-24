@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  auth:
+    image: mqtt-auth:latest
+    restart: always
+    environment:
+      - PORT=5050
+      - MQTT_BROKER_IP=172.17.0.1
+      - MQTT_BROKER_PORT=1883
+      - MQTT_MASTER_USERNAME=MQTT_USERNAME
+      - MQTT_MASTER_PASSWORD=MQTT_PASSWORD
+    ports:
+    - "5050:5050"

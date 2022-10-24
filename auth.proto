@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "mqtt-auth-server/auth";
+
+service MqttAuth {
+  rpc CreateUser (UserRequest) returns (Response) {}
+  rpc UpdateUser (UserRequest) returns (Response) {}
+  rpc ActivateDevice (DeviceRequest) returns (Response) {}
+  rpc DeactivateDevice (DeviceRequest) returns (Response) {}
+}
+
+// The request message containing the user's name.
+message UserRequest {
+  string login = 1;
+  string token = 2;
+}
+
+message DeviceRequest {
+    string login = 1;
+    string mac = 2;
+}
+
+message Response {
+    string result = 1;
+}
