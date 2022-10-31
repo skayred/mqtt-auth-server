@@ -1,4 +1,4 @@
-module mqtt-auth-server
+module github.com/skayred/mqtt-auth-server
 
 go 1.14
 
